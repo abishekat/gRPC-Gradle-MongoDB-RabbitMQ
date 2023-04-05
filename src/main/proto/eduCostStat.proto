@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package proto;
+
+option java_package = "cu.assignment2.proto";
+option java_multiple_files = true;
+import "google/protobuf/empty.proto";
+
+
+
+service EduCostStatService{
+  rpc test(Request) returns (Response);
+  rpc Q1(QueryRequest) returns (QueryResponse) {}
+  rpc Q2(Query2Request) returns (QueryResponse) {}
+  rpc Q3(Query3Request) returns (QueryResponse) {}
+  rpc Q4(Query4Request) returns (QueryResponse) {}
+  rpc Q5(Query4Request) returns (Query5Response) {}
+}
+
+message EduCostStat {
+  string id = 1;
+  string year = 2;
+  string state = 3;
+  string type = 4;
+  string length = 5;
+  string expense = 6;
+  string value = 7;
+}
+
+message QueryResponse {
+  repeated EduCostStat eduCostStats = 1;
+}
+
+message QueryRequest {
+  string year = 1;
+  string state = 2;
+  string type = 3;
+  string length = 4;
+  string expense = 5;
+}
+
+message Query2Request {
+  string year = 1;
+  string type = 2;
+  string length = 3;
+}
+
+message Query3Request {
+  string year = 1;
+  string type = 2;
+  string length = 3;
+  string expense = 4  ;
+}
+
+message Query4Request {
+  string year = 1;
+  string type = 2;
+  string length = 3;
+}
+
+message Query5Response{
+  repeated RegionExpense regionExpenses = 1;
+}
+
+message RegionExpense {
+  string region = 1;
+  string expense = 2;
+}
+
+message Request{
+  string name = 1;
+}
+
+message Response{
+  string name = 1;
+}
